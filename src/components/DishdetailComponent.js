@@ -1,15 +1,13 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { 
     Card, CardImg, CardText, CardTitle, CardBody
 } from 'reactstrap';
 
-class Dishdetail extends Component {
-
-    convertToDTF(date) {
+    function convertToDTF(date) {
         return new Intl.DateTimeFormat('en-US', {year: 'numeric', month: 'short', day: '2-digit'}).format(new Date(Date.parse(date)))
     }
 
-    renderDish(dish) {
+    function RenderDish({ dish }) {
         if (dish != null)
             return(
                 <Card>
@@ -26,18 +24,18 @@ class Dishdetail extends Component {
             );
     }
 
-    renderComments(dish) {
+    function RenderComments({ dish }) {
         if (dish != null) 
             return(
                 <div>
                     <h4>Comments</h4>
                     <ul className="list-unstyled">
                         {
-                        this.props.dish.comments.map((comment) => {
+                        dish.comments.map((comment) => {
                             return (
                                 <li>
                                     <p>{comment.comment}</p>
-                                    <p>-- {comment.author}, {this.convertToDTF(comment.date)}</p>
+                                    <p>-- {comment.author}, {convertToDTF(comment.date)}</p>
                                 </li>
                             )
                         })}
@@ -50,20 +48,19 @@ class Dishdetail extends Component {
             );
     }
 
-    render() {
+    const Dishdetail = (props) => {
         return (
             <div className="container">
                 <div className="row">
                     <div className="col-12 col-md-5 m-1">
-                        {this.renderDish(this.props.dish)}
+                        <RenderDish dish={props.dish} />
                     </div>
                     <div className="col-12 col-md-5 m-1">
-                        {this.renderComments(this.props.dish)}
+                        <RenderComments dish={props.dish} />
                     </div>
                 </div>
             </div>
         )
     }
-}
 
 export default Dishdetail;
