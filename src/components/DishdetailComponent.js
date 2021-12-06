@@ -5,6 +5,10 @@ import {
 
 class Dishdetail extends Component {
 
+    convertToDTF(date) {
+        return new Intl.DateTimeFormat('en-US', {year: 'numeric', month: 'short', day: '2-digit'}).format(new Date(Date.parse(date)))
+    }
+
     renderDish(dish) {
         if (dish != null)
             return(
@@ -33,7 +37,7 @@ class Dishdetail extends Component {
                             return (
                                 <li>
                                     <p>{comment.comment}</p>
-                                    <p>-- {comment.author}, {comment.date}</p>
+                                    <p>-- {comment.author}, {this.convertToDTF(comment.date)}</p>
                                 </li>
                             )
                         })}
@@ -48,12 +52,14 @@ class Dishdetail extends Component {
 
     render() {
         return (
-            <div className="row">
-                <div className="col-12 col-md-5 m-1">
-                    {this.renderDish(this.props.dish)}
-                </div>
-                <div className="col-12 col-md-5 m-1">
-                    {this.renderComments(this.props.dish)}
+            <div className="container">
+                <div className="row">
+                    <div className="col-12 col-md-5 m-1">
+                        {this.renderDish(this.props.dish)}
+                    </div>
+                    <div className="col-12 col-md-5 m-1">
+                        {this.renderComments(this.props.dish)}
+                    </div>
                 </div>
             </div>
         )
