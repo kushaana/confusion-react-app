@@ -3,6 +3,7 @@ import {
     Card, CardImg, CardText, CardTitle, CardBody, Breadcrumb, BreadcrumbItem 
 } from 'reactstrap';
 import { Link } from 'react-router-dom';
+import CommentForm from './CommentForm';
 
     function convertToDTF(date) {
         return new Intl.DateTimeFormat('en-US', {year: 'numeric', month: 'short', day: '2-digit'}).format(new Date(Date.parse(date)))
@@ -69,6 +70,7 @@ import { Link } from 'react-router-dom';
                     </div>
                     <div className="col-12 col-md-5 m-1">
                         <RenderComments comments={props.comments} />
+                        <CommentForm />
                     </div>
                 </div>
             </div>
