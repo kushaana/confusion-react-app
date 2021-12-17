@@ -54,9 +54,15 @@ class CommentForm extends Component{
                             <Row>
                                 <Label htmlFor="rating">Rating</Label>
                                 <Col>
-                                    <Control type="number" model=".rating" id="rating" name="rating"
-                                        className="form-control" min="1" max="10"
-                                    />
+                                    <Control.select model=".rating" id="rating" name="rating"
+                                        className="form-control" 
+                                    >
+                                        <option>1</option>
+                                        <option>2</option>
+                                        <option>3</option>
+                                        <option>4</option>
+                                        <option>5</option>
+                                    </Control.select>
                                 </Col>
                             </Row>
                             <Row className="form-group mt-2">
