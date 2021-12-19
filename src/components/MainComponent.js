@@ -6,7 +6,7 @@ import Contact from './ContactComponent';
 import DishDetail from './DishdetailComponent';
 import Header from './HeaderComponent';
 import Footer from './FooterComponent';
-import { Switch, Route, useParams, withRouter } from 'react-router-dom';
+import { Switch, Route, useParams, withRouter, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 const mapStateToProps = state => {
@@ -19,11 +19,6 @@ const mapStateToProps = state => {
 }
 
 class Main extends Component {
-
-  constructor(props) {
-    super(props);
-
-  }
 
 
   render() {
@@ -47,12 +42,12 @@ class Main extends Component {
       <div>
         <Header />
         <Switch>
-          <Route path='/home' component={HomePage} />
+          <Route exact path='/home' component={HomePage} />
           <Route exact path='/aboutus' component={() => <About leaders={this.props.leaders} />} />
           <Route exact path='/menu' component={() => <Menu dishes={this.props.dishes} />} />
-          <Route path='/menu/:dishId' component={DishWithId} />
+          <Route exact path='/menu/:dishId' component={DishWithId} />
           <Route exact path='/contactus' component={Contact} />
-          <Route path="*" element={HomePage} />
+          <Redirect to="/home" />
         </Switch>
         <Footer />
       </div>

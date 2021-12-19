@@ -47,12 +47,12 @@ class Header extends Component {
             <div>
                 <Navbar dark expand="md">
                     <div className="container">
-                        <NavbarBrand className="mr-auto" href="/">
+                        <NavbarBrand className="mr-auto" href="/home">
                             <img src="assets/images/logo.png" height="30" width="41"
                                 alt="Ristorante Con Fusion" />
                         </NavbarBrand>
                         <NavbarToggler onClick={this.toggleNav} />
-                        <Collapse isOpen={this.state.isNavOpen} navbar>
+                        <Collapse isOpen={this.state.isNavOpen} style={{justifyContent: "space-between"}} navbar>
                             <Nav navbar>
                                 <NavItem>
                                     <NavLink className="nav-link" to="/home">
